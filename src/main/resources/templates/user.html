@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <title>Spring Security Example</title>
+</head>
+<body>
+<h1>User, welcome spring boot security page!</h1>
+<br/>
+<a class="nav-link out" th:href="@{/logout}">Logout</a>
+
+<form action="#"  th:action="@{/admin/user_create}" th:object="${user}" method="post">
+    <label for="nameId">name</label>
+    <label for="Id">id</label>
+    <input type="text" th:field="*{id}" id="Id" readonly/>
+    <br><br>
+    <label for="nameId">name</label>
+    <input type="text" th:field="*{username}" id="nameId"/>
+    <br><br>
+    <label for="lastnameId">lastname</label>
+    <input type="text" th:field="*{lastname}" id="lastnameId"/>
+    <br><br>
+    <label for="emailId">email</label>
+    <input type="text" th:field="*{email}" id="emailId"/>
+    <br><br>
+    <label for="passwordId">password</label>
+    <input type="text" th:field="*{password}" id="passwordId"/>
+    <br><br>
+
+    <th:block th:each="role: ${listRoles}">
+        <input type="checkbox" th:field="*{roles}"
+               th:text="${role.name}" th:value="${role.id}" class="m-2" />
+    </th:block>
+
+    <br><br>
+    <input type="submit" value="OK"/>
+
+
+
+</form>
+
+
+</body>
+</html>
